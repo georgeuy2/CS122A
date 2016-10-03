@@ -1,6 +1,13 @@
-/*
-This code was automatically generated using the Riverside-Irvine State machine Builder tool
-Version 2.7 --- 9/28/2016 9:42:12 PST
+/* Partner(s) Name & Email: Gian Ocampo(gocam001@ucr.edu)
+* Lab Section: 21
+* Assignment: Lab 1 Exercise 3 & 4
+* Exercise Description: Develop an idea for system with at least two truly concurrent synchSMs. The more interesting
+the behavior, the better. Note that the concurrency need not only relate to output displays, but
+may also detect certain events/sequences on the inputs. Capture the system in RIBS and
+simulate.
+*
+* I acknowledge all content contained herein, excluding template or example
+* code, is my own original work.
 */
 
 #include "rims.h"

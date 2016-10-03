@@ -9,7 +9,6 @@ demo to your TA.
 * code, is my own original work.
 */
 
-
 #include "rims.h"
 
 /*This code will be shared between state machines.*/
@@ -28,11 +27,11 @@ typedef struct task {
 task tasks[3];
 
 const unsigned char tasksNum = 3;
-const unsigned long periodBlink_LED = 500;
+const unsigned long periodBlink_LED = 400;
 const unsigned long periodButton = 200;
-const unsigned long periodLifeLED = 500;
+const unsigned long periodLifeLED = 400;
 
-const unsigned long tasksPeriodGCD = 100;
+const unsigned long tasksPeriodGCD = 200;
 
 int TickFct_Blink_LED(int state);
 int TickFct_Button(int state);
@@ -143,7 +142,7 @@ static unsigned char buttonPress = 0;
 if(buttonPress == ledOn){
 score++;
 }
-else if(buttonPress != ledOn && playerLife!= 0){
+if(buttonPress != ledOn && playerLife!= 0){
 //score--;
 playerLife--;
 }
@@ -153,15 +152,10 @@ gameOver = 1;
 }
 score << 1;
 B = (B & 0xE1) | score;
-
          }
          break;
       case SM3_Press:
-         if (A0) {
-            state = SM3_Press;
-            buttonPress = 0;
-         }
-         else if (!A0) {
+         if (1) {
             state = SM3_Release;
             buttonPress = 0;
          }
@@ -179,6 +173,20 @@ B = (B & 0xE1) | score;
       case SM3_Wait:
          break;
       case SM3_Press:
+         buttonPress = 1;
+         if(buttonPress == ledOn){
+         score++;
+         }
+         if(buttonPress != ledOn && playerLife!= 0){
+         //score--;
+         playerLife--;
+         }
+         if(playerLife == 0){
+         B = score;
+         gameOver = 1;
+         }
+         score << 1;
+         B = (B & 0xE1) | score;
          break;
       case SM3_Release:
          break;
